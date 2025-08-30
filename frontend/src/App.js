@@ -18,7 +18,16 @@ import {
   BookOpen,
   Activity,
   Calendar,
-  Settings
+  Settings,
+  Database,
+  Loader2,
+  Rocket,
+  AlertCircle,
+  Lightbulb,
+  Building2,
+  Clock,
+  Layers,
+  Code
 } from "lucide-react";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
@@ -32,78 +41,109 @@ const DashboardOverview = ({ data }) => {
     <div className="space-y-6">
       {/* Key Metrics Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <Card className="p-6 bg-gradient-to-br from-blue-50 to-blue-100 border-blue-200">
-          <div className="flex items-center justify-between">
+        <Card className="glass-card p-6 relative overflow-hidden group">
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-blue-600/5 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <div className="relative flex items-center justify-between">
             <div>
               <p className="text-sm font-medium text-blue-600">Total Employees</p>
-              <p className="text-3xl font-bold text-blue-900">{data.metrics.total_employees}</p>
+              <p className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-blue-800">
+                {data.metrics.total_employees}
+              </p>
             </div>
-            <Users className="h-8 w-8 text-blue-500" />
+            <div className="p-3 rounded-full bg-blue-50 group-hover:bg-blue-100 transition-colors duration-300">
+              <Users className="h-8 w-8 text-blue-500" />
+            </div>
           </div>
         </Card>
         
-        <Card className="p-6 bg-gradient-to-br from-green-50 to-green-100 border-green-200">
-          <div className="flex items-center justify-between">
+        <Card className="glass-card p-6 relative overflow-hidden group">
+          <div className="absolute inset-0 bg-gradient-to-br from-green-500/10 to-green-600/5 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <div className="relative flex items-center justify-between">
             <div>
               <p className="text-sm font-medium text-green-600">Active Projects</p>
-              <p className="text-3xl font-bold text-green-900">{data.metrics.active_projects}</p>
+              <p className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-green-600 to-green-800">
+                {data.metrics.active_projects}
+              </p>
             </div>
-            <Target className="h-8 w-8 text-green-500" />
+            <div className="p-3 rounded-full bg-green-50 group-hover:bg-green-100 transition-colors duration-300">
+              <Target className="h-8 w-8 text-green-500" />
+            </div>
           </div>
         </Card>
         
-        <Card className="p-6 bg-gradient-to-br from-purple-50 to-purple-100 border-purple-200">
-          <div className="flex items-center justify-between">
+        <Card className="glass-card p-6 relative overflow-hidden group">
+          <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-purple-600/5 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <div className="relative flex items-center justify-between">
             <div>
               <p className="text-sm font-medium text-purple-600">Avg Performance</p>
-              <p className="text-3xl font-bold text-purple-900">{(data.metrics.avg_performance_score * 100).toFixed(0)}%</p>
+              <p className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-purple-800">
+                {(data.metrics.avg_performance_score * 100).toFixed(0)}%
+              </p>
             </div>
-            <TrendingUp className="h-8 w-8 text-purple-500" />
+            <div className="p-3 rounded-full bg-purple-50 group-hover:bg-purple-100 transition-colors duration-300">
+              <TrendingUp className="h-8 w-8 text-purple-500" />
+            </div>
           </div>
         </Card>
         
-        <Card className="p-6 bg-gradient-to-br from-orange-50 to-orange-100 border-orange-200">
-          <div className="flex items-center justify-between">
+        <Card className="glass-card p-6 relative overflow-hidden group">
+          <div className="absolute inset-0 bg-gradient-to-br from-orange-500/10 to-orange-600/5 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <div className="relative flex items-center justify-between">
             <div>
               <p className="text-sm font-medium text-orange-600">Productivity Score</p>
-              <p className="text-3xl font-bold text-orange-900">{(data.metrics.avg_productivity_score * 100).toFixed(0)}%</p>
+              <p className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-orange-600 to-orange-800">
+                {(data.metrics.avg_productivity_score * 100).toFixed(0)}%
+              </p>
             </div>
-            <Activity className="h-8 w-8 text-orange-500" />
+            <div className="p-3 rounded-full bg-orange-50 group-hover:bg-orange-100 transition-colors duration-300">
+              <Activity className="h-8 w-8 text-orange-500" />
+            </div>
           </div>
         </Card>
         
-        <Card className="p-6 bg-gradient-to-br from-teal-50 to-teal-100 border-teal-200">
-          <div className="flex items-center justify-between">
+        <Card className="glass-card p-6 relative overflow-hidden group">
+          <div className="absolute inset-0 bg-gradient-to-br from-teal-500/10 to-teal-600/5 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <div className="relative flex items-center justify-between">
             <div>
               <p className="text-sm font-medium text-teal-600">Project Success Rate</p>
-              <p className="text-3xl font-bold text-teal-900">{data.metrics.avg_project_success_rate}%</p>
+              <p className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-teal-600 to-teal-800">
+                {data.metrics.avg_project_success_rate}%
+              </p>
             </div>
-            <Award className="h-8 w-8 text-teal-500" />
+            <div className="p-3 rounded-full bg-teal-50 group-hover:bg-teal-100 transition-colors duration-300">
+              <Award className="h-8 w-8 text-teal-500" />
+            </div>
           </div>
         </Card>
         
-        <Card className="p-6 bg-gradient-to-br from-indigo-50 to-indigo-100 border-indigo-200">
-          <div className="flex items-center justify-between">
+        <Card className="glass-card p-6 relative overflow-hidden group">
+          <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/10 to-indigo-600/5 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <div className="relative flex items-center justify-between">
             <div>
               <p className="text-sm font-medium text-indigo-600">Total Projects</p>
-              <p className="text-3xl font-bold text-indigo-900">{data.metrics.total_projects}</p>
+              <p className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-indigo-800">
+                {data.metrics.total_projects}
+              </p>
             </div>
-            <BarChart3 className="h-8 w-8 text-indigo-500" />
+            <div className="p-3 rounded-full bg-indigo-50 group-hover:bg-indigo-100 transition-colors duration-300">
+              <BarChart3 className="h-8 w-8 text-indigo-500" />
+            </div>
           </div>
         </Card>
       </div>
 
       {/* Department Distribution */}
-      <Card className="p-6">
-        <h3 className="text-lg font-semibold mb-4 flex items-center">
-          <Users className="w-5 h-5 mr-2" />
+      <Card className="modern-card p-6 relative">
+        <div className="absolute inset-0 bg-gradient-to-br from-indigo-50/50 to-purple-50/50 opacity-50"></div>
+        <h3 className="relative text-lg font-semibold mb-4 flex items-center bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600">
+          <Users className="w-5 h-5 mr-2 text-indigo-600" />
           Department Distribution
         </h3>
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+        <div className="relative grid grid-cols-2 md:grid-cols-3 gap-4">
           {Object.entries(data.department_distribution).map(([dept, count]) => (
-            <div key={dept} className="text-center p-4 bg-gray-50 rounded-lg">
-              <p className="text-2xl font-bold text-gray-800">{count}</p>
-              <p className="text-sm text-gray-600">{dept}</p>
+            <div key={dept} className="glass-card text-center p-4 hover:bg-white/90 transition-all duration-300">
+              <p className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600">{count}</p>
+              <p className="text-sm text-gray-600 mt-1">{dept}</p>
             </div>
           ))}
         </div>
@@ -118,28 +158,38 @@ const CollaborationNetwork = ({ data }) => {
 
   return (
     <div className="space-y-6">
-      <Card className="p-6">
-        <h3 className="text-lg font-semibold mb-4 flex items-center">
-          <Network className="w-5 h-5 mr-2" />
+      <Card className="modern-card p-6 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-50/30 to-indigo-50/30 opacity-50"></div>
+        <h3 className="relative text-lg font-semibold mb-4 flex items-center bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600">
+          <Network className="w-5 h-5 mr-2 text-blue-600" />
           Collaboration Network Analysis
         </h3>
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* Network Stats */}
-          <div className="space-y-4">
-            <h4 className="font-medium">Network Statistics</h4>
-            <div className="space-y-2">
-              <div className="flex justify-between">
-                <span className="text-sm text-gray-600">Total Connections:</span>
-                <Badge variant="secondary">{data.edges.length}</Badge>
+          <div className="glass-card p-6 space-y-4 hover:bg-white/90 transition-all duration-300">
+            <h4 className="font-medium bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600">Network Statistics</h4>
+            <div className="space-y-3">
+              <div className="flex justify-between items-center p-2 hover:bg-blue-50/50 rounded-lg transition-colors duration-200">
+                <span className="text-sm text-gray-600 flex items-center">
+                  <div className="w-2 h-2 rounded-full bg-blue-400 mr-2"></div>
+                  Total Connections
+                </span>
+                <Badge variant="secondary" className="bg-blue-100 text-blue-700 hover:bg-blue-200">{data.edges.length}</Badge>
               </div>
-              <div className="flex justify-between">
-                <span className="text-sm text-gray-600">Active Collaborators:</span>
-                <Badge variant="secondary">{data.nodes.length}</Badge>
+              <div className="flex justify-between items-center p-2 hover:bg-indigo-50/50 rounded-lg transition-colors duration-200">
+                <span className="text-sm text-gray-600 flex items-center">
+                  <div className="w-2 h-2 rounded-full bg-indigo-400 mr-2"></div>
+                  Active Collaborators
+                </span>
+                <Badge variant="secondary" className="bg-indigo-100 text-indigo-700 hover:bg-indigo-200">{data.nodes.length}</Badge>
               </div>
-              <div className="flex justify-between">
-                <span className="text-sm text-gray-600">Avg Connection Strength:</span>
-                <Badge variant="secondary">
+              <div className="flex justify-between items-center p-2 hover:bg-purple-50/50 rounded-lg transition-colors duration-200">
+                <span className="text-sm text-gray-600 flex items-center">
+                  <div className="w-2 h-2 rounded-full bg-purple-400 mr-2"></div>
+                  Avg Connection Strength
+                </span>
+                <Badge variant="secondary" className="bg-purple-100 text-purple-700 hover:bg-purple-200">
                   {(data.edges.reduce((sum, edge) => sum + edge.strength, 0) / data.edges.length).toFixed(2)}
                 </Badge>
               </div>
@@ -147,19 +197,29 @@ const CollaborationNetwork = ({ data }) => {
           </div>
           
           {/* Top Collaborators */}
-          <div className="space-y-4">
-            <h4 className="font-medium">Top Collaborators</h4>
-            <div className="space-y-2">
+          <div className="glass-card p-6 space-y-4 hover:bg-white/90 transition-all duration-300">
+            <h4 className="font-medium bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600">Top Collaborators</h4>
+            <div className="space-y-3">
               {data.nodes
                 .sort((a, b) => b.collaboration_index - a.collaboration_index)
                 .slice(0, 5)
                 .map((node, index) => (
-                  <div key={node.id} className="flex items-center justify-between p-2 bg-gray-50 rounded">
-                    <div>
-                      <p className="font-medium text-sm">{node.name}</p>
-                      <p className="text-xs text-gray-600">{node.department}</p>
+                  <div 
+                    key={node.id} 
+                    className="flex items-center justify-between p-3 rounded-lg hover:bg-gradient-to-r hover:from-blue-50/50 hover:to-indigo-50/50 transition-all duration-300 border border-transparent hover:border-blue-100"
+                  >
+                    <div className="flex items-center space-x-3">
+                      <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-100 to-indigo-100 flex items-center justify-center">
+                        <span className="text-sm font-semibold text-blue-600">{index + 1}</span>
+                      </div>
+                      <div>
+                        <p className="font-medium text-sm">{node.name}</p>
+                        <p className="text-xs text-gray-600">{node.department}</p>
+                      </div>
                     </div>
-                    <Badge variant="outline">{(node.collaboration_index * 100).toFixed(0)}%</Badge>
+                    <Badge variant="outline" className="bg-gradient-to-r from-blue-100 to-indigo-100 text-blue-700">
+                      {(node.collaboration_index * 100).toFixed(0)}%
+                    </Badge>
                   </div>
                 ))}
             </div>
@@ -168,17 +228,28 @@ const CollaborationNetwork = ({ data }) => {
         
         {/* Department Collaboration */}
         <div className="mt-6">
-          <h4 className="font-medium mb-3">Department Collaboration Patterns</h4>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-            {Array.from(new Set(data.nodes.map(n => n.department))).map(dept => {
+          <h4 className="font-medium mb-3 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600">Department Collaboration Patterns</h4>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+            {Array.from(new Set(data.nodes.map(n => n.department))).map((dept, index) => {
               const deptNodes = data.nodes.filter(n => n.department === dept);
               const avgCollaboration = deptNodes.reduce((sum, node) => sum + node.collaboration_index, 0) / deptNodes.length;
+              const gradients = [
+                'from-blue-700 to-indigo-700 text-white',
+                'from-indigo-700 to-purple-700 text-white',
+                'from-purple-700 to-blue-700 text-white'
+              ];
+              const gradient = gradients[index % gradients.length];
               
               return (
-                <div key={dept} className="p-3 bg-blue-50 rounded-lg text-center">
-                  <p className="text-sm font-medium">{dept}</p>
-                  <p className="text-lg font-bold text-blue-600">{(avgCollaboration * 100).toFixed(0)}%</p>
-                  <p className="text-xs text-gray-600">{deptNodes.length} members</p>
+                <div 
+                  key={dept} 
+                  className={`glass-card p-4 text-center hover:bg-white/90 transition-all duration-300 hover:transform hover:-translate-y-1`}
+                >
+                  <p className="text-sm font-medium text-gray-700">{dept}</p>
+                  <p className="text-lg font-bold mt-1 bg-gradient-to-r from-blue-100 to-indigo-100 text-blue-700">
+                    {(avgCollaboration * 100).toFixed(0)}%
+                  </p>
+                  <p className="text-xs text-gray-600 mt-1">{deptNodes.length} members</p>
                 </div>
               );
             })}
@@ -197,22 +268,26 @@ const SkillGapAnalysis = ({ data }) => {
     <div className="space-y-6">
       {/* Critical Gaps Alert */}
       {data.critical_gaps.length > 0 && (
-        <Card className="p-6 border-red-200 bg-red-50">
-          <h3 className="text-lg font-semibold mb-4 flex items-center text-red-800">
-            <AlertTriangle className="w-5 h-5 mr-2" />
+        <Card className="modern-card p-6 relative overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-red-50/30 to-orange-50/30 opacity-50"></div>
+          <h3 className="relative text-lg font-semibold mb-4 flex items-center bg-clip-text text-transparent bg-gradient-to-r from-red-600 to-orange-600">
+            <AlertTriangle className="w-5 h-5 mr-2 text-red-500" />
             Critical Skill Gaps ({data.critical_gaps.length})
           </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="relative grid grid-cols-1 md:grid-cols-2 gap-4">
             {data.critical_gaps.slice(0, 4).map((gap, index) => (
-              <div key={index} className="p-4 bg-white rounded-lg border border-red-200">
+              <div key={index} className="glass-card p-4 hover:bg-white/90 transition-all duration-300 border-red-100">
                 <div className="flex justify-between items-start mb-2">
                   <div>
-                    <p className="font-medium">{gap.skill}</p>
+                    <p className="font-medium bg-clip-text text-transparent bg-gradient-to-r from-red-600 to-orange-600">{gap.skill}</p>
                     <p className="text-sm text-gray-600">{gap.department}</p>
                   </div>
-                  <Badge variant="destructive">{gap.gap_percentage}% gap</Badge>
+                  <Badge variant="destructive" className="bg-gradient-to-r from-red-500 to-orange-500">{gap.gap_percentage}% gap</Badge>
                 </div>
-                <p className="text-sm text-gray-700">{gap.affected_employees} employees affected</p>
+                <p className="text-sm text-gray-700 flex items-center">
+                  <Users className="w-4 h-4 mr-1 text-red-400" />
+                  {gap.affected_employees} employees affected
+                </p>
               </div>
             ))}
           </div>
@@ -220,36 +295,51 @@ const SkillGapAnalysis = ({ data }) => {
       )}
 
       {/* Department Skill Analysis */}
-      <Card className="p-6">
-        <h3 className="text-lg font-semibold mb-4 flex items-center">
-          <BookOpen className="w-5 h-5 mr-2" />
+      <Card className="modern-card p-6 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-50/30 to-blue-50/30 opacity-50"></div>
+        <h3 className="relative text-lg font-semibold mb-4 flex items-center bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-blue-600">
+          <BookOpen className="w-5 h-5 mr-2 text-purple-500" />
           Skill Gap Analysis by Department
         </h3>
         
-        <div className="space-y-6">
+        <div className="relative space-y-6">
           {Object.entries(data.by_department).map(([dept, gaps]) => (
-            <div key={dept} className="border rounded-lg p-4">
-              <h4 className="font-medium mb-3">{dept} Department</h4>
-              <div className="space-y-3">
+            <div key={dept} className="glass-card p-6 hover:bg-white/90 transition-all duration-300">
+              <h4 className="font-medium mb-4 bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-blue-600">{dept} Department</h4>
+              <div className="space-y-4">
                 {gaps.map((gap, index) => (
-                  <div key={index} className="space-y-2">
+                  <div key={index} className="space-y-3 p-3 rounded-lg hover:bg-gradient-to-r hover:from-purple-50/30 hover:to-blue-50/30 transition-all duration-300">
                     <div className="flex justify-between items-center">
                       <span className="font-medium text-sm">{gap.skill}</span>
                       <div className="flex items-center space-x-2">
                         <Badge 
                           variant={gap.gap_level === 'critical' ? 'destructive' : 
                                  gap.gap_level === 'moderate' ? 'default' : 'secondary'}
+                          className={gap.gap_level === 'critical' ? 'bg-gradient-to-r from-red-500 to-orange-500' :
+                                   gap.gap_level === 'moderate' ? 'bg-gradient-to-r from-orange-500 to-yellow-500' :
+                                   'bg-gradient-to-r from-green-500 to-emerald-500'}
                         >
                           {gap.gap_level}
                         </Badge>
                         <span className="text-sm text-gray-600">{gap.gap_percentage}% gap</span>
                       </div>
                     </div>
-                    <Progress value={gap.current_proficiency * 100} className="h-2" />
-                    <div className="text-xs text-gray-600">
-                      Current: {(gap.current_proficiency * 100).toFixed(0)}% | 
-                      Required: {(gap.required_proficiency * 100).toFixed(0)}% | 
-                      Affected: {gap.affected_employees} employees
+                    <div className="relative">
+                      <Progress 
+                        value={gap.current_proficiency * 100} 
+                        className="h-2 bg-gray-100 overflow-hidden" 
+                        indicatorClassName={`bg-gradient-to-r ${gap.gap_level === 'critical' ? 'from-red-500 to-orange-500' :
+                                          gap.gap_level === 'moderate' ? 'from-orange-500 to-yellow-500' :
+                                          'from-green-500 to-emerald-500'}`}
+                      />
+                    </div>
+                    <div className="text-xs text-gray-600 flex items-center justify-between">
+                      <span>Current: {(gap.current_proficiency * 100).toFixed(0)}% |</span> 
+                      <span>Required: {(gap.required_proficiency * 100).toFixed(0)}%</span>
+                       <span className="flex items-center">
+                         <Users className="w-3 h-3 mr-1 text-gray-400" />
+                         {gap.affected_employees} affected
+                       </span>
                     </div>
                     
                     {/* Training Recommendations */}
@@ -301,37 +391,39 @@ const ProjectForecasting = ({ data }) => {
     <div className="space-y-6">
       {/* Success Distribution */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <Card className="p-6">
-          <h3 className="text-lg font-semibold mb-4 flex items-center">
-            <Target className="w-5 h-5 mr-2" />
+        <Card className="modern-card p-6 relative overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-emerald-50/30 to-teal-50/30 opacity-50"></div>
+          <h3 className="relative text-lg font-semibold mb-4 flex items-center bg-clip-text text-transparent bg-gradient-to-r from-emerald-600 to-teal-600">
+            <Target className="w-5 h-5 mr-2 text-emerald-500" />
             Project Success Distribution
           </h3>
-          <div className="space-y-4">
-            <div className="flex justify-between items-center p-3 bg-green-50 rounded-lg">
-              <span className="font-medium">High Success (≥80%)</span>
-              <Badge className="bg-green-600">{data.success_distribution.high} projects</Badge>
+          <div className="relative space-y-4">
+            <div className="glass-card flex justify-between items-center p-4 hover:bg-white/90 transition-all duration-300">
+              <span className="font-medium bg-clip-text text-transparent bg-gradient-to-r from-emerald-600 to-teal-600">High Success (≥80%)</span>
+              <Badge className="bg-gradient-to-r from-emerald-500 to-teal-500">{data.success_distribution.high} projects</Badge>
             </div>
-            <div className="flex justify-between items-center p-3 bg-yellow-50 rounded-lg">
-              <span className="font-medium">Medium Success (60-79%)</span>
-              <Badge className="bg-yellow-600">{data.success_distribution.medium} projects</Badge>
+            <div className="glass-card flex justify-between items-center p-4 hover:bg-white/90 transition-all duration-300">
+              <span className="font-medium bg-clip-text text-transparent bg-gradient-to-r from-yellow-600 to-orange-600">Medium Success (60-79%)</span>
+              <Badge className="bg-gradient-to-r from-yellow-500 to-orange-500">{data.success_distribution.medium} projects</Badge>
             </div>
-            <div className="flex justify-between items-center p-3 bg-red-50 rounded-lg">
-              <span className="font-medium">Low Success (&lt;60%)</span>
-              <Badge className="bg-red-600">{data.success_distribution.low} projects</Badge>
+            <div className="glass-card flex justify-between items-center p-4 hover:bg-white/90 transition-all duration-300">
+              <span className="font-medium bg-clip-text text-transparent bg-gradient-to-r from-red-600 to-orange-600">Low Success (&lt;60%)</span>
+              <Badge className="bg-gradient-to-r from-red-500 to-orange-500">{data.success_distribution.low} projects</Badge>
             </div>
           </div>
         </Card>
 
-        <Card className="p-6">
-          <h3 className="text-lg font-semibold mb-4 flex items-center">
-            <Activity className="w-5 h-5 mr-2" />
+        <Card className="modern-card p-6 relative overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-violet-50/30 to-purple-50/30 opacity-50"></div>
+          <h3 className="relative text-lg font-semibold mb-4 flex items-center bg-clip-text text-transparent bg-gradient-to-r from-violet-600 to-purple-600">
+            <Activity className="w-5 h-5 mr-2 text-violet-500" />
             Project Status Overview
           </h3>
-          <div className="space-y-3">
+          <div className="relative space-y-3">
             {Object.entries(data.status_distribution).map(([status, count]) => (
-              <div key={status} className="flex justify-between items-center p-2 bg-gray-50 rounded">
-                <span className="font-medium">{status}</span>
-                <Badge variant="secondary">{count}</Badge>
+              <div key={status} className="glass-card flex justify-between items-center p-4 hover:bg-white/90 transition-all duration-300">
+                <span className="font-medium bg-clip-text text-transparent bg-gradient-to-r from-violet-600 to-purple-600">{status}</span>
+                <Badge className="bg-gradient-to-r from-violet-500 to-purple-500">{count}</Badge>
               </div>
             ))}
           </div>
@@ -339,17 +431,24 @@ const ProjectForecasting = ({ data }) => {
       </div>
 
       {/* Department Success Rates */}
-      <Card className="p-6">
-        <h3 className="text-lg font-semibold mb-4 flex items-center">
-          <BarChart3 className="w-5 h-5 mr-2" />
+      <Card className="modern-card p-6 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-cyan-50/30 to-blue-50/30 opacity-50"></div>
+        <h3 className="relative text-lg font-semibold mb-4 flex items-center bg-clip-text text-transparent bg-gradient-to-r from-cyan-600 to-blue-600">
+          <BarChart3 className="w-5 h-5 mr-2 text-cyan-500" />
           Success Rates by Department
         </h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {Object.entries(data.department_success_rates).map(([dept, rate]) => (
-            <div key={dept} className="p-4 bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg">
-              <p className="font-medium">{dept}</p>
-              <p className="text-2xl font-bold text-blue-600">{rate}%</p>
-              <Progress value={rate} className="mt-2 h-2" />
+            <div key={dept} className="glass-card p-6 hover:bg-white/90 transition-all duration-300">
+              <p className="font-medium bg-clip-text text-transparent bg-gradient-to-r from-cyan-600 to-blue-600">{dept}</p>
+              <p className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-600 to-blue-600">{rate}%</p>
+              <div className="relative mt-2">
+                <Progress 
+                  value={rate} 
+                  className="h-2 bg-gray-100 overflow-hidden" 
+                  indicatorClassName="bg-gradient-to-r from-cyan-500 to-blue-500"
+                />
+              </div>
             </div>
           ))}
         </div>
@@ -357,23 +456,34 @@ const ProjectForecasting = ({ data }) => {
 
       {/* Risk Projects */}
       {data.risk_projects.length > 0 && (
-        <Card className="p-6 border-orange-200 bg-orange-50">
-          <h3 className="text-lg font-semibold mb-4 flex items-center text-orange-800">
-            <AlertTriangle className="w-5 h-5 mr-2" />
+        <Card className="modern-card p-6 relative overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-orange-50/30 to-red-50/30 opacity-50"></div>
+          <h3 className="relative text-lg font-semibold mb-4 flex items-center bg-clip-text text-transparent bg-gradient-to-r from-orange-600 to-red-600">
+            <AlertTriangle className="w-5 h-5 mr-2 text-orange-500" />
             Projects at Risk ({data.risk_projects.length})
           </h3>
-          <div className="space-y-3">
+          <div className="relative space-y-4">
             {data.risk_projects.map((project, index) => (
-              <div key={index} className="flex justify-between items-center p-3 bg-white rounded-lg border border-orange-200">
-                <div>
-                  <p className="font-medium">{project.name}</p>
-                  <p className="text-sm text-gray-600">
-                    Status: {project.status} | Team Size: {project.team_size}
-                  </p>
+              <div key={index} className="glass-card p-6 hover:bg-white/90 transition-all duration-300 border-orange-100">
+                <div className="flex justify-between items-start">
+                  <div>
+                    <p className="font-medium bg-clip-text text-transparent bg-gradient-to-r from-orange-600 to-red-600">{project.name}</p>
+                    <p className="text-sm text-gray-600 flex items-center mt-1">
+                      <AlertCircle className="w-4 h-4 mr-1 text-orange-400" />
+                      Status: {project.status}
+                    </p>
+                    <p className="text-sm text-gray-600 flex items-center mt-1">
+                      <Users className="w-4 h-4 mr-1 text-orange-400" />
+                      Team Size: {project.team_size}
+                    </p>
+                  </div>
+                  <Badge 
+                    variant="destructive"
+                    className="bg-gradient-to-r from-orange-500 to-red-500"
+                  >
+                    {(project.success_probability * 100).toFixed(0)}% success
+                  </Badge>
                 </div>
-                <Badge variant="destructive">
-                  {(project.success_probability * 100).toFixed(0)}% success
-                </Badge>
               </div>
             ))}
           </div>
@@ -381,16 +491,21 @@ const ProjectForecasting = ({ data }) => {
       )}
 
       {/* Insights */}
-      <Card className="p-6">
-        <h3 className="text-lg font-semibold mb-4 flex items-center">
-          <Brain className="w-5 h-5 mr-2" />
+      <Card className="modern-card p-6 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-indigo-50/30 to-purple-50/30 opacity-50"></div>
+        <h3 className="relative text-lg font-semibold mb-4 flex items-center bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600">
+          <Brain className="w-5 h-5 mr-2 text-indigo-500" />
           Forecasting Insights
         </h3>
-        <div className="space-y-2">
+        <div className="relative space-y-3">
           {data.forecasting_insights.map((insight, index) => (
-            <div key={index} className="flex items-start space-x-2">
-              <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
-              <p className="text-sm text-gray-700">{insight}</p>
+            <div key={index} className="glass-card p-4 hover:bg-white/90 transition-all duration-300">
+              <div className="flex items-start space-x-3">
+                <div className="w-8 h-8 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 flex items-center justify-center flex-shrink-0">
+                  <Lightbulb className="w-4 h-4 text-white" />
+                </div>
+                <p className="text-sm text-gray-700 pt-1">{insight}</p>
+              </div>
             </div>
           ))}
         </div>
@@ -407,41 +522,59 @@ const PerformanceTrends = ({ data }) => {
     <div className="space-y-6">
       {/* Department Performance */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <Card className="p-6">
-          <h3 className="text-lg font-semibold mb-4 flex items-center">
-            <TrendingUp className="w-5 h-5 mr-2" />
+        <Card className="modern-card p-6 relative overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-emerald-50/30 to-teal-50/30 opacity-50"></div>
+          <h3 className="relative text-lg font-semibold mb-4 flex items-center bg-clip-text text-transparent bg-gradient-to-r from-emerald-600 to-teal-600">
+            <TrendingUp className="w-5 h-5 mr-2 text-emerald-500" />
             Performance by Department
           </h3>
-          <div className="space-y-3">
+          <div className="relative space-y-4">
             {Object.entries(data.department_performance)
               .sort(([,a], [,b]) => b - a)
               .map(([dept, score]) => (
-                <div key={dept} className="space-y-1">
-                  <div className="flex justify-between">
-                    <span className="font-medium">{dept}</span>
-                    <span className="text-sm font-bold">{(score * 100).toFixed(0)}%</span>
+                <div key={dept} className="glass-card p-4 hover:bg-white/90 transition-all duration-300">
+                  <div className="flex justify-between items-center mb-2">
+                    <span className="font-medium bg-clip-text text-transparent bg-gradient-to-r from-emerald-600 to-teal-600">{dept}</span>
+                    <span className="text-sm font-bold bg-clip-text text-transparent bg-gradient-to-r from-emerald-600 to-teal-600">
+                      {(score * 100).toFixed(0)}%
+                    </span>
                   </div>
-                  <Progress value={score * 100} className="h-2" />
+                  <div className="relative">
+                    <Progress 
+                      value={score * 100} 
+                      className="h-2 bg-gray-100 overflow-hidden" 
+                      indicatorClassName="bg-gradient-to-r from-emerald-500 to-teal-500"
+                    />
+                  </div>
                 </div>
               ))}
           </div>
         </Card>
 
-        <Card className="p-6">
-          <h3 className="text-lg font-semibold mb-4 flex items-center">
-            <Activity className="w-5 h-5 mr-2" />
+        <Card className="modern-card p-6 relative overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-50/30 to-indigo-50/30 opacity-50"></div>
+          <h3 className="relative text-lg font-semibold mb-4 flex items-center bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600">
+            <Activity className="w-5 h-5 mr-2 text-blue-500" />
             Productivity by Department
           </h3>
-          <div className="space-y-3">
+          <div className="relative space-y-4">
             {Object.entries(data.department_productivity)
               .sort(([,a], [,b]) => b - a)
               .map(([dept, score]) => (
-                <div key={dept} className="space-y-1">
-                  <div className="flex justify-between">
-                    <span className="font-medium">{dept}</span>
-                    <span className="text-sm font-bold">{(score * 100).toFixed(0)}%</span>
+                <div key={dept} className="glass-card p-4 hover:bg-white/90 transition-all duration-300">
+                  <div className="flex justify-between items-center mb-2">
+                    <span className="font-medium bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600">{dept}</span>
+                    <span className="text-sm font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600">
+                      {(score * 100).toFixed(0)}%
+                    </span>
                   </div>
-                  <Progress value={score * 100} className="h-2" />
+                  <div className="relative">
+                    <Progress 
+                      value={score * 100} 
+                      className="h-2 bg-gray-100 overflow-hidden" 
+                      indicatorClassName="bg-gradient-to-r from-blue-500 to-indigo-500"
+                    />
+                  </div>
                 </div>
               ))}
           </div>
@@ -449,27 +582,43 @@ const PerformanceTrends = ({ data }) => {
       </div>
 
       {/* Top Performers */}
-      <Card className="p-6">
-        <h3 className="text-lg font-semibold mb-4 flex items-center">
-          <Award className="w-5 h-5 mr-2" />
+      <Card className="modern-card p-6 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-amber-50/30 to-yellow-50/30 opacity-50"></div>
+        <h3 className="relative text-lg font-semibold mb-4 flex items-center bg-clip-text text-transparent bg-gradient-to-r from-amber-600 to-yellow-600">
+          <Award className="w-5 h-5 mr-2 text-amber-500" />
           Top Performers
         </h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {data.top_performers.slice(0, 9).map((performer, index) => (
-            <div key={index} className="p-4 bg-gradient-to-br from-yellow-50 to-yellow-100 rounded-lg border border-yellow-200">
-              <div className="flex items-center justify-between mb-2">
-                <p className="font-medium">{performer.name}</p>
-                <Badge className="bg-yellow-600">#{index + 1}</Badge>
-              </div>
-              <p className="text-sm text-gray-600 mb-2">{performer.department}</p>
-              <div className="space-y-1">
-                <div className="flex justify-between text-xs">
-                  <span>Performance:</span>
-                  <span className="font-bold">{(performer.performance_score * 100).toFixed(0)}%</span>
+            <div key={index} className="glass-card p-6 hover:bg-white/90 transition-all duration-300">
+              <div className="flex items-center justify-between mb-3">
+                <div>
+                  <p className="font-medium bg-clip-text text-transparent bg-gradient-to-r from-amber-600 to-yellow-600">{performer.name}</p>
+                  <p className="text-sm text-gray-600 flex items-center mt-1">
+                    <Building2 className="w-4 h-4 mr-1 text-amber-400" />
+                    {performer.department}
+                  </p>
                 </div>
-                <div className="flex justify-between text-xs">
-                  <span>Productivity:</span>
-                  <span className="font-bold">{(performer.productivity_score * 100).toFixed(0)}%</span>
+                <Badge className="bg-gradient-to-r from-amber-500 to-yellow-500">#{index + 1}</Badge>
+              </div>
+              <div className="space-y-3">
+                <div className="flex justify-between items-center p-2 rounded-lg hover:bg-gradient-to-r hover:from-amber-50/30 hover:to-yellow-50/30 transition-all duration-300">
+                  <span className="text-sm flex items-center">
+                    <TrendingUp className="w-4 h-4 mr-1 text-amber-400" />
+                    Performance
+                  </span>
+                  <span className="text-sm font-bold bg-clip-text text-transparent bg-gradient-to-r from-amber-600 to-yellow-600">
+                    {(performer.performance_score * 100).toFixed(0)}%
+                  </span>
+                </div>
+                <div className="flex justify-between items-center p-2 rounded-lg hover:bg-gradient-to-r hover:from-amber-50/30 hover:to-yellow-50/30 transition-all duration-300">
+                  <span className="text-sm flex items-center">
+                    <Activity className="w-4 h-4 mr-1 text-amber-400" />
+                    Productivity
+                  </span>
+                  <span className="text-sm font-bold bg-clip-text text-transparent bg-gradient-to-r from-amber-600 to-yellow-600">
+                    {(performer.productivity_score * 100).toFixed(0)}%
+                  </span>
                 </div>
               </div>
             </div>
@@ -478,12 +627,13 @@ const PerformanceTrends = ({ data }) => {
       </Card>
 
       {/* Experience Correlation */}
-      <Card className="p-6">
-        <h3 className="text-lg font-semibold mb-4 flex items-center">
-          <Calendar className="w-5 h-5 mr-2" />
+      <Card className="modern-card p-6 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-violet-50/30 to-fuchsia-50/30 opacity-50"></div>
+        <h3 className="relative text-lg font-semibold mb-4 flex items-center bg-clip-text text-transparent bg-gradient-to-r from-violet-600 to-fuchsia-600">
+          <Calendar className="w-5 h-5 mr-2 text-violet-500" />
           Experience vs Performance Analysis
         </h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           {[
             { range: "1-3 years", min: 1, max: 3 },
             { range: "4-7 years", min: 4, max: 7 },
@@ -498,10 +648,18 @@ const PerformanceTrends = ({ data }) => {
               : 0;
             
             return (
-              <div key={range} className="p-4 bg-purple-50 rounded-lg text-center">
-                <p className="font-medium text-purple-800">{range}</p>
-                <p className="text-2xl font-bold text-purple-600">{(avgPerformance * 100).toFixed(0)}%</p>
-                <p className="text-xs text-gray-600">{groupData.length} employees</p>
+              <div key={range} className="glass-card p-6 hover:bg-white/90 transition-all duration-300 text-center">
+                <div className="w-12 h-12 mx-auto mb-3 rounded-full bg-gradient-to-r from-violet-500 to-fuchsia-500 flex items-center justify-center">
+                  <Clock className="w-6 h-6 text-white" />
+                </div>
+                <p className="font-medium bg-clip-text text-transparent bg-gradient-to-r from-violet-600 to-fuchsia-600">{range}</p>
+                <p className="text-3xl font-bold mt-2 bg-clip-text text-transparent bg-gradient-to-r from-violet-600 to-fuchsia-600">
+                  {(avgPerformance * 100).toFixed(0)}%
+                </p>
+                <p className="text-sm text-gray-600 mt-2 flex items-center justify-center">
+                  <Users className="w-4 h-4 mr-1 text-violet-400" />
+                  {groupData.length} employees
+                </p>
               </div>
             );
           })}
@@ -590,32 +748,41 @@ const SemanticMatching = ({ data }) => {
       </Card>
 
       {/* Skill Clusters */}
-      <Card className="p-6">
-        <h3 className="text-lg font-semibold mb-4 flex items-center">
-          <Network className="w-5 h-5 mr-2" />
+      <Card className="modern-card p-6 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-cyan-50/30 to-blue-50/30 opacity-50"></div>
+        <h3 className="relative text-lg font-semibold mb-4 flex items-center bg-clip-text text-transparent bg-gradient-to-r from-cyan-600 to-blue-600">
+          <Network className="w-5 h-5 mr-2 text-cyan-500" />
           Skill-Based Employee Clusters
         </h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="relative grid grid-cols-1 md:grid-cols-2 gap-4">
           {data.skill_clusters
             .sort((a, b) => b.cluster_size - a.cluster_size)
             .slice(0, 6)
             .map((cluster, index) => (
-              <div key={index} className="p-4 bg-blue-50 rounded-lg border border-blue-200">
-                <div className="flex justify-between items-start mb-2">
-                  <h4 className="font-medium text-blue-800">
+              <div key={index} className="glass-card p-6 hover:bg-white/90 transition-all duration-300">
+                <div className="flex justify-between items-start mb-4">
+                  <h4 className="font-medium bg-clip-text text-transparent bg-gradient-to-r from-cyan-600 to-blue-600 flex items-center">
+                    <Layers className="w-4 h-4 mr-2 text-cyan-500" />
                     Cluster {index + 1}
                   </h4>
-                  <Badge className="bg-blue-600">
+                  <Badge className="bg-gradient-to-r from-cyan-500 to-blue-500 text-white">
                     {cluster.cluster_size} members
                   </Badge>
                 </div>
                 
-                <div className="space-y-2">
+                <div className="space-y-3">
                   <div>
-                    <p className="text-xs font-medium text-gray-700 mb-1">Common Skills:</p>
-                    <div className="flex flex-wrap gap-1">
+                    <p className="text-sm font-medium text-cyan-700 mb-2 flex items-center">
+                      <Code className="w-4 h-4 mr-1 text-cyan-500" />
+                      Common Skills:
+                    </p>
+                    <div className="flex flex-wrap gap-2">
                       {cluster.skills.map((skill, skillIndex) => (
-                        <Badge key={skillIndex} variant="outline" className="text-xs">
+                        <Badge 
+                          key={skillIndex} 
+                          variant="outline" 
+                          className="text-xs bg-gradient-to-r from-cyan-50 to-blue-50 text-cyan-700 border-cyan-200"
+                        >
                           {skill}
                         </Badge>
                       ))}
@@ -623,8 +790,11 @@ const SemanticMatching = ({ data }) => {
                   </div>
                   
                   <div>
-                    <p className="text-xs font-medium text-gray-700 mb-1">Team Members:</p>
-                    <div className="text-xs text-gray-600">
+                    <p className="text-sm font-medium text-cyan-700 mb-2 flex items-center">
+                      <Users className="w-4 h-4 mr-1 text-cyan-500" />
+                      Team Members:
+                    </p>
+                    <div className="text-sm text-cyan-600 bg-gradient-to-r from-cyan-50 to-blue-50 p-2 rounded-md">
                       {cluster.employees.join(", ")}
                     </div>
                   </div>
@@ -635,16 +805,19 @@ const SemanticMatching = ({ data }) => {
       </Card>
 
       {/* Recommendations */}
-      <Card className="p-6">
-        <h3 className="text-lg font-semibold mb-4 flex items-center">
-          <Brain className="w-5 h-5 mr-2" />
+      <Card className="modern-card p-6 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-indigo-50/30 to-purple-50/30 opacity-50"></div>
+        <h3 className="relative text-lg font-semibold mb-4 flex items-center bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600">
+          <Brain className="w-5 h-5 mr-2 text-indigo-500" />
           Semantic Matching Recommendations
         </h3>
-        <div className="space-y-2">
+        <div className="relative space-y-3">
           {data.recommendations.map((recommendation, index) => (
-            <div key={index} className="flex items-start space-x-2">
-              <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
-              <p className="text-sm text-gray-700">{recommendation}</p>
+            <div key={index} className="glass-card p-4 hover:bg-white/90 transition-all duration-300 flex items-start space-x-3">
+              <div className="w-8 h-8 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 flex items-center justify-center flex-shrink-0">
+                <Lightbulb className="w-4 h-4 text-white" />
+              </div>
+              <p className="text-sm text-indigo-700 flex-grow">{recommendation}</p>
             </div>
           ))}
         </div>
@@ -701,16 +874,18 @@ function App() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <header className="bg-white shadow-sm border-b">
+      <header className="bg-white/80 backdrop-blur-sm shadow-lg border-b border-white/20 sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <div className="flex items-center space-x-3">
-              <Brain className="h-8 w-8 text-blue-600" />
+            <div className="flex items-center space-x-4">
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center shadow-lg">
+                <Brain className="h-6 w-6 text-white" />
+              </div>
               <div>
-                <h1 className="text-xl font-bold text-gray-900">
+                <h1 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">
                   Workforce Productivity Analytics
                 </h1>
-                <p className="text-sm text-gray-500">
+                <p className="text-sm text-gray-600">
                   BigQuery AI-Powered Insights Platform
                 </p>
               </div>
@@ -721,13 +896,27 @@ function App() {
                 <Button 
                   onClick={initializeData} 
                   disabled={loading}
-                  className="bg-blue-600 hover:bg-blue-700"
+                  className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-lg transition-all duration-300"
                 >
-                  {loading ? "Initializing..." : "Initialize Sample Data"}
+                  {loading ? (
+                    <div className="flex items-center space-x-2">
+                      <Loader2 className="w-4 h-4 animate-spin" />
+                      <span>Initializing...</span>
+                    </div>
+                  ) : (
+                    <div className="flex items-center space-x-2">
+                      <Database className="w-4 h-4" />
+                      <span>Initialize Sample Data</span>
+                    </div>
+                  )}
                 </Button>
               )}
-              <Badge variant="outline" className="flex items-center space-x-1">
-                <Settings className="w-3 h-3" />
+              <Badge 
+                variant="outline" 
+                className="flex items-center space-x-2 bg-gradient-to-r from-green-50 to-emerald-50 text-emerald-700 border-emerald-200"
+              >
+                <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
+                <Settings className="w-3 h-3 text-emerald-500" />
                 <span>BigQuery Connected</span>
               </Badge>
             </div>
@@ -736,49 +925,84 @@ function App() {
       </header>
 
       {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {!dataInitialized ? (
-          <div className="text-center py-16">
-            <Brain className="mx-auto h-16 w-16 text-gray-400 mb-4" />
-            <h2 className="text-2xl font-bold text-gray-900 mb-2">
-              Welcome to Workforce Analytics
-            </h2>
-            <p className="text-gray-600 mb-6">
-              Initialize sample data to start exploring AI-powered workforce insights
-            </p>
-            <Button 
-              onClick={initializeData} 
-              disabled={loading}
-              size="lg"
-              className="bg-blue-600 hover:bg-blue-700"
-            >
-              {loading ? "Setting up analytics..." : "Get Started"}
-            </Button>
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 relative">
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 via-purple-50/30 to-cyan-50/50 pointer-events-none"></div>
+        <div className="relative">
+          {!dataInitialized ? (
+          <div className="glass-card max-w-2xl mx-auto text-center py-16 relative overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-br from-blue-50/30 via-purple-50/20 to-cyan-50/30 opacity-50"></div>
+            <div className="relative">
+              <div className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center shadow-xl">
+                <Brain className="h-12 w-12 text-white" />
+              </div>
+              <h2 className="text-3xl font-bold mb-3 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">
+                Welcome to Workforce Analytics
+              </h2>
+              <p className="text-lg text-gray-600 mb-8">
+                Initialize sample data to start exploring AI-powered workforce insights
+              </p>
+              <Button 
+                onClick={initializeData} 
+                disabled={loading}
+                size="lg"
+                className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-lg transition-all duration-300 px-8 py-3 text-lg"
+              >
+                {loading ? (
+                  <div className="flex items-center justify-center space-x-3">
+                    <Loader2 className="w-5 h-5 animate-spin" />
+                    <span>Setting up analytics...</span>
+                  </div>
+                ) : (
+                  <div className="flex items-center justify-center space-x-3">
+                    <Rocket className="w-5 h-5" />
+                    <span>Get Started</span>
+                  </div>
+                )}
+              </Button>
+            </div>
           </div>
         ) : (
           <Tabs defaultValue="overview" className="space-y-6">
-            <TabsList className="grid w-full grid-cols-3 lg:grid-cols-6">
-              <TabsTrigger value="overview" className="flex items-center space-x-1">
+            <TabsList className="grid w-full grid-cols-3 lg:grid-cols-6 glass-card p-1 gap-1 bg-white/50">
+              <TabsTrigger 
+                value="overview" 
+                className="flex items-center space-x-2 data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-500 data-[state=active]:to-purple-500 data-[state=active]:text-white transition-all duration-300"
+              >
                 <BarChart3 className="w-4 h-4" />
                 <span className="hidden sm:inline">Overview</span>
               </TabsTrigger>
-              <TabsTrigger value="collaboration" className="flex items-center space-x-1">
+              <TabsTrigger 
+                value="collaboration" 
+                className="flex items-center space-x-2 data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-500 data-[state=active]:to-purple-500 data-[state=active]:text-white transition-all duration-300"
+              >
                 <Network className="w-4 h-4" />
                 <span className="hidden sm:inline">Network</span>
               </TabsTrigger>
-              <TabsTrigger value="skills" className="flex items-center space-x-1">
+              <TabsTrigger 
+                value="skills" 
+                className="flex items-center space-x-2 data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-500 data-[state=active]:to-purple-500 data-[state=active]:text-white transition-all duration-300"
+              >
                 <BookOpen className="w-4 h-4" />
                 <span className="hidden sm:inline">Skills</span>
               </TabsTrigger>
-              <TabsTrigger value="forecasting" className="flex items-center space-x-1">
+              <TabsTrigger 
+                value="forecasting" 
+                className="flex items-center space-x-2 data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-500 data-[state=active]:to-purple-500 data-[state=active]:text-white transition-all duration-300"
+              >
                 <Target className="w-4 h-4" />
                 <span className="hidden sm:inline">Projects</span>
               </TabsTrigger>
-              <TabsTrigger value="performance" className="flex items-center space-x-1">
+              <TabsTrigger 
+                value="performance" 
+                className="flex items-center space-x-2 data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-500 data-[state=active]:to-purple-500 data-[state=active]:text-white transition-all duration-300"
+              >
                 <TrendingUp className="w-4 h-4" />
                 <span className="hidden sm:inline">Performance</span>
               </TabsTrigger>
-              <TabsTrigger value="semantic" className="flex items-center space-x-1">
+              <TabsTrigger 
+                value="semantic" 
+                className="flex items-center space-x-2 data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-500 data-[state=active]:to-purple-500 data-[state=active]:text-white transition-all duration-300"
+              >
                 <Brain className="w-4 h-4" />
                 <span className="hidden sm:inline">AI Matching</span>
               </TabsTrigger>
@@ -809,6 +1033,7 @@ function App() {
             </TabsContent>
           </Tabs>
         )}
+        </div>
       </main>
     </div>
   );
